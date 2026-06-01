@@ -9,11 +9,11 @@
 
     body {
 
-      font-family: Fixed Width;
+      font-family: impact;
 
       background: #f591f0;
 
-      padding: 40px;
+      padding: 70px;
 
     }
 
@@ -89,9 +89,9 @@ function createEmoji() {
 
     const speed = 2 + Math.random() * 4;
 
-    const waveSize = 30 + Math.random() * 100;
+    const waveSize = 30 + Math.random() * 50;
 
-    const waveSpeed = 0.02 + Math.random() * 0.05;
+    const waveSpeed = 0.01 + Math.random() * 0.05;
 
     emoji.style.position = "fixed";
 
@@ -141,7 +141,7 @@ function changeText() {
 
     document.getElementById("message").innerText =
 
-        "ok here's a rose 🌹";
+        "ok here's a rose (o_0) 🌹";
 
     setInterval(createEmoji, 40);
 
