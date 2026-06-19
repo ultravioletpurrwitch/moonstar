@@ -126,16 +126,27 @@ function createEmoji() {
 function collectEmoji(emoji, fall) {
     clearInterval(fall);
 
-    emoji.style.transition = "all 0.8s ease-in-out";
+    emoji.style.transition =
+        "all 0.55s cubic-bezier(0.22, 1.4, 0.36, 1)";
+
     emoji.style.left = "50%";
-    emoji.style.top = "70%";
+    emoji.style.top = "55%";
     emoji.style.transform =
-        "translate(-50%, -50%) scale(3) rotate(360deg)";
-    emoji.style.opacity = "0";
+        "translate(-50%, -50%) scale(4) rotate(18deg)";
+    emoji.style.filter =
+        "drop-shadow(0 0 18px white)";
+
+    setTimeout(() => {
+        emoji.innerText = "✨";
+        emoji.style.transition = "all 0.25s ease-out";
+        emoji.style.transform =
+            "translate(-50%, -50%) scale(7)";
+        emoji.style.opacity = "0";
+    }, 550);
 
     setTimeout(() => {
         emoji.remove();
-    }, 800);
+    }, 850);
 }
 
 function changeText() {
