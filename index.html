@@ -68,36 +68,27 @@
   <script>
 
 const emojis = [
-
 "🌸","🍦","🌷","🌙","⭐","🪻","🍓","✨",
-
 "💖","🌼","🦄","🫐","🌿","🐬","🦋",
-
 "🌛","🌕","🪐","🌈","💫","🍒","🍉"
-
 ];
 
 function createEmoji() {
-
     const emoji = document.createElement("div");
 
     emoji.innerText =
         emojis[Math.floor(Math.random() * emojis.length)];
 
     const startX = Math.random() * window.innerWidth;
-
     let y = -50;
 
     const speed = 2 + Math.random() * 4;
-
     const waveSize = 30 + Math.random() * 50;
-
     const waveSpeed = 0.01 + Math.random() * 0.05;
 
     emoji.style.position = "fixed";
     emoji.style.top = "-50px";
-    emoji.style.fontSize =
-        (20 + Math.random() * 30) + "px";
+    emoji.style.fontSize = (20 + Math.random() * 30) + "px";
     emoji.style.pointerEvents = "auto";
     emoji.style.cursor = "grab";
     emoji.style.zIndex = "9999";
@@ -107,9 +98,7 @@ function createEmoji() {
     let time = 0;
 
     const fall = setInterval(() => {
-
         y += speed;
-
         time++;
 
         const x =
@@ -123,7 +112,6 @@ function createEmoji() {
             clearInterval(fall);
             emoji.remove();
         }
-
     }, 16);
 
     emoji.addEventListener("click", () => {
@@ -136,90 +124,25 @@ function createEmoji() {
 }
 
 function collectEmoji(emoji, fall) {
-
     clearInterval(fall);
 
-    emoji.style.transition =
-
-        "all 0.8s ease-in-out";
-
-    emoji.style.left = "50%";
-
-    emoji.style.top = "70%";
-
-    emoji.style.transform =
-
-        "translate(-50%, -50%) scale(3) rotate(360deg)";
-
-    emoji.style.opacity = "0";
-
-    setTimeout(() => {
-
-        emoji.remove();
-
-    }, 800);
-
-}
-    let time = 0;
-
-    const fall = setInterval(() => {
-
-        y += speed;
-
-        time++;
-
-        const x =
-
-            startX +
-
-            Math.sin(time * waveSpeed) * waveSize;
-
-        emoji.style.left = x + "px";
-
-        emoji.style.top = y + "px";
-
-        if (y > window.innerHeight + 50) {
-
-            clearInterval(fall);
-
-            emoji.remove();
-
-        }
-
-    }, 16);
-
-}
-
-function collectEmoji(emoji, fall) {
-    clearInterval(fall);
-
-    emoji.style.transition =
-        "all 0.8s ease-in-out";
-
+    emoji.style.transition = "all 0.8s ease-in-out";
     emoji.style.left = "50%";
     emoji.style.top = "70%";
     emoji.style.transform =
         "translate(-50%, -50%) scale(3) rotate(360deg)";
-
     emoji.style.opacity = "0";
 
     setTimeout(() => {
         emoji.remove();
     }, 800);
 }
-      
+
 function changeText() {
-
     document.getElementById("message").innerText =
-
-        "ok here's a rose (o_0)🌹"+
-        "         ."+
-        "         ."+
-        "         ."+
-        "initiating whimsical weather";
+        "ok here's a rose (o_0)🌹... initiating whimsical weather";
 
     setInterval(createEmoji, 40);
-
 }
 
 </script>
