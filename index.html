@@ -82,7 +82,6 @@ function createEmoji() {
     const emoji = document.createElement("div");
 
     emoji.innerText =
-
         emojis[Math.floor(Math.random() * emojis.length)];
 
     const startX = Math.random() * window.innerWidth;
@@ -96,19 +95,71 @@ function createEmoji() {
     const waveSpeed = 0.01 + Math.random() * 0.05;
 
     emoji.style.position = "fixed";
-
     emoji.style.top = "-50px";
-
     emoji.style.fontSize =
-
         (20 + Math.random() * 30) + "px";
-
-    emoji.style.pointerEvents = "none";
-
+    emoji.style.pointerEvents = "auto";
+    emoji.style.cursor = "grab";
     emoji.style.zIndex = "9999";
 
     document.body.appendChild(emoji);
 
+    let time = 0;
+
+    const fall = setInterval(() => {
+
+        y += speed;
+
+        time++;
+
+        const x =
+            startX +
+            Math.sin(time * waveSpeed) * waveSize;
+
+        emoji.style.left = x + "px";
+        emoji.style.top = y + "px";
+
+        if (y > window.innerHeight + 50) {
+            clearInterval(fall);
+            emoji.remove();
+        }
+
+    }, 16);
+
+    emoji.addEventListener("click", () => {
+        collectEmoji(emoji, fall);
+    });
+
+    emoji.addEventListener("touchstart", () => {
+        collectEmoji(emoji, fall);
+    });
+}
+
+function collectEmoji(emoji, fall) {
+
+    clearInterval(fall);
+
+    emoji.style.transition =
+
+        "all 0.8s ease-in-out";
+
+    emoji.style.left = "50%";
+
+    emoji.style.top = "70%";
+
+    emoji.style.transform =
+
+        "translate(-50%, -50%) scale(3) rotate(360deg)";
+
+    emoji.style.opacity = "0";
+
+    setTimeout(() => {
+
+        emoji.remove();
+
+    }, 800);
+
+}
     let time = 0;
 
     const fall = setInterval(() => {
@@ -139,6 +190,24 @@ function createEmoji() {
 
 }
 
+function collectEmoji(emoji, fall) {
+    clearInterval(fall);
+
+    emoji.style.transition =
+        "all 0.8s ease-in-out";
+
+    emoji.style.left = "50%";
+    emoji.style.top = "70%";
+    emoji.style.transform =
+        "translate(-50%, -50%) scale(3) rotate(360deg)";
+
+    emoji.style.opacity = "0";
+
+    setTimeout(() => {
+        emoji.remove();
+    }, 800);
+}
+      
 function changeText() {
 
     document.getElementById("message").innerText =
